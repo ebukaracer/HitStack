@@ -1,0 +1,13 @@
+{
+  "KeyValues": {
+    "ItemButton_0": true,
+    "ItemButton_1": true,
+    "ItemButton_2": false,
+    "ItemButton_3": false,
+    "PlayerItem": 1,
+    "Highscore": 760,
+    "Score": 0,
+    "Level01": 35,
+    "Level02": 36
+  }
+}
