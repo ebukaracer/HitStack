@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 internal class Regenerator : MonoBehaviour
 {
@@ -12,9 +12,9 @@ internal class Regenerator : MonoBehaviour
     private float _currentAmount = Min;
     private bool _isDecreasing;
 
-    public event UnityAction<float> OnManaChanged;
-    public event UnityAction<float> OnPowerupDecrease;
-    public event UnityAction<bool> OnUsePowerup;
+    public event Action<float> OnManaChanged;
+    public event Action<float> OnPowerupDecrease;
+    public event Action<bool> OnUsePowerup;
 
     [SerializeField, Range(0f, 1f),
      Tooltip("A higher value will decrease the power-up fill image instantly when power-up is attained")]

@@ -1,14 +1,14 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using UnityEngine;
 
 internal class CheckCollision : MonoBehaviour, IStackController, IPlayerState
 {
     protected bool HasClicked;
 
     // From Interface
-    public event UnityAction<GameObject> OnHitBadStack;
-    public event UnityAction<GameObject> OnHitGoodStack;
-    public event UnityAction<GameObject> OnHitCheckpoint;
+    public event Action<GameObject> OnHitBadStack;
+    public event Action<GameObject> OnHitGoodStack;
+    public event Action<GameObject> OnHitCheckpoint;
 
 
     public void StartBounce(bool hasClicked)

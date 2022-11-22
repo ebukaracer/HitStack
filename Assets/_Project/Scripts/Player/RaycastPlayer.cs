@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 internal class RaycastPlayer : MonoBehaviour, IPlayerState, IStackController
 {
@@ -17,9 +16,9 @@ internal class RaycastPlayer : MonoBehaviour, IPlayerState, IStackController
     private bool _isGameover;
     private bool _isCompleted;
 
-    public event UnityAction<GameObject> OnHitBadStack;
-    public event UnityAction<GameObject> OnHitGoodStack;
-    public event UnityAction<GameObject> OnHitCheckpoint;
+    public event Action<GameObject> OnHitBadStack;
+    public event Action<GameObject> OnHitGoodStack;
+    public event Action<GameObject> OnHitCheckpoint;
 
     [Header("RAYCAST SETTINGS"), Tooltip("Default value serves best result")]
     // Initial point for the raycast

@@ -1,10 +1,10 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using UnityEngine;
 
 
 public interface IPlayerState
 {
-    event UnityAction<GameObject> OnHitGoodStack;
-    event UnityAction<GameObject> OnHitBadStack;
-    event UnityAction<GameObject> OnHitCheckpoint;
+    event Action<GameObject> OnHitGoodStack;
+    event Action<GameObject> OnHitBadStack;
+    event Action<GameObject> OnHitCheckpoint;
 }
