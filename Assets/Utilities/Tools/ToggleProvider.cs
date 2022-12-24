@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public enum ToggleState { On, Off }
 
 namespace Racer.Utilities
 {
     /// <summary>
-    /// Provides useful methods for Custom Toggle Implementation.
+    /// Provides useful methods for a Custom Toggle Implementation,
+    /// useful for a two-way toggle; on/off.
     /// </summary>
     public abstract class ToggleProvider : MonoBehaviour
     {
@@ -19,14 +19,6 @@ namespace Racer.Utilities
         // Handy if you'd save the effect's current state.
         public string saveString;
 
-        [Space(5), Header("Target Graphics")]
-
-        // Main Parent icon.
-        public Image parentIcon;
-
-        // On/Off Sprites that would replace the parent icon.
-        public Sprite[] onOffIcons;
-
 
         /// <summary>
         /// Retrieves the current state of the Toggle.
@@ -36,6 +28,8 @@ namespace Racer.Utilities
         /// Invoke your save-class here(retrieval).
         /// </remarks>
         protected abstract void InitToggle();
+
+        protected abstract void ApplyToggle();
 
         /// <summary>
         /// Toggles the current effect On/Off.
@@ -48,7 +42,7 @@ namespace Racer.Utilities
         {
             ToggleIndex++;
 
-            ToggleIndex %= onOffIcons.Length;
+            ToggleIndex %= (int)ToggleState.Off + 1;
         }
 
         /// <summary>
@@ -56,13 +50,14 @@ namespace Racer.Utilities
         /// </summary>
         /// <remarks>
         /// Override this method to add extra logic.
+        /// Default state is 0 -> play.
         /// </remarks>
         protected virtual void SyncToggle()
         {
             // 0 = play, 1 = stop
             toggleState = ToggleIndex == 0 ? ToggleState.On : ToggleState.Off;
 
-            parentIcon.sprite = onOffIcons[ToggleIndex];
+            ApplyToggle();
         }
     }
 }

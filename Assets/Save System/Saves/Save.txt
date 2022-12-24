@@ -8,6 +8,8 @@
     "Highscore": 760,
     "Score": 0,
     "Level01": 35,
-    "Level02": 36
+    "Level02": 36,
+    "Sound": 1,
+    "Haptics": 1
   }
 }

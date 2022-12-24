@@ -1,8 +1,16 @@
+using Racer.SaveSystem;
 using Racer.SoundManager;
 using Racer.Utilities;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundToggle : ToggleProvider
 {
+    [Space(5), Header("TARGET GRAPHICS")]
+    public Image parentIcon;
+    public Sprite[] onOffIcons;
+
+
     private void Awake()
     {
         InitToggle();
@@ -10,7 +18,7 @@ public class SoundToggle : ToggleProvider
 
     protected override void InitToggle()
     {
-        // ToggleIndex = SaveManager.GetInt(saveString);
+        ToggleIndex = SaveSystem.GetData<int>(saveString);
 
         SyncToggle();
     }
@@ -19,19 +27,22 @@ public class SoundToggle : ToggleProvider
     {
         base.Toggle();
 
-        // SaveManager.SaveInt(saveString, ToggleIndex);
+        SaveSystem.SaveData(saveString, ToggleIndex);
 
         SyncToggle();
     }
-
 
     protected override void SyncToggle()
     {
         base.SyncToggle();
 
+        parentIcon.sprite = onOffIcons[ToggleIndex];
+    }
+
+    protected override void ApplyToggle()
+    {
         switch (toggleState)
         {
-            // default:
             case ToggleState.On:
                 SoundManager.Instance.EnableMusic(true);
                 SoundManager.Instance.EnableSfx(true);
